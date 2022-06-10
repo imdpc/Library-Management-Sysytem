@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content %}
+<h3 class='text-center mt-3 mb-5'>Welcome To Dashboard</h3>
+
+{% if is_superuser %}
+<div class="row text-center mb-3">
+    <div class="col-md-3 mt-5">
+        <a href="{% url 'add_book' %}">
+            <button class="btn btn-success">Add Book</button>
+        </a>
+    </div>
+
+    {% endif %}
+
+    <div class="col-md-8 mx-auto">
+        <table class="table">
+            <tr>
+                <th>Book Name</th>
+                <th>Author Name</th>
+                {% if is_superuser %}
+
+                <th>Edit</th>
+                <th>Delete</th>
+                {% endif %}
+
+            </tr>
+
+            {% for x in data %}
+
+            <tr>
+                <td>{{x.name}}</td>
+                <td>{{x.author}}</td>
+
+                {% if is_superuser %}
+
+                <td><a href="/edit/{{x.id}}"><button class="btn btn-warning">Edit</button> </a></td>
+                <td><a href="/delete/{{x.id}}"><button class="btn btn-danger">Delete</button> </a></td>
+                {% endif %}
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Add Book</h3>
+    <form action="{% url 'add_book' %}" method="POST">
+        {% csrf_token %}
+        
+        <table class="table">
+            <tr>
+                <td>Book Name:</td>
+                <td><input type="text" name="bname" id="" required></td>
+            </tr>
+            <tr>
+                <td>Author:</td>
+                <td><input type="text" name="bauthor" id="" required></td>
+            </tr>
+            <td><input type="submit" value="Add Book" class="btn btn-success"></td>
+            <tr></tr>
+        </table>
+    </form>
+{% endblock content %}

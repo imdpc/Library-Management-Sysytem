@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Edit Book Data</h3>
+    {% for x in data %}
+    <form action="{% url 'edit_book' x.id %}" method="POST">
+        {% csrf_token %}
+        
+        <table class="table">
+            <tr>
+                <td>Book Name:</td>
+                <td><input type="text" name="bname" id="" value='{{x.name}}' required></td>
+            </tr>
+            <tr>
+                <td>Author:</td>
+                <td><input type="text" name="bauthor" id="" value='{{x.author}}' required></td>
+            </tr>
+            <td><input type="submit" value="Update" class="btn btn-success" ></td>
+            <tr></tr>
+            
+        </table>
+        {% endfor %}
+    </form>
+{% endblock content %}
